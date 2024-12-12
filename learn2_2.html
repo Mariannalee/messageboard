@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tharder - 屬於科技人的留言版</title>
+    <link rel="stylesheet" href="learnStyle2.css">
+    <script  type="module" src="learnScript2.js" defer></script>
+</head>
+<body>
+    <div class="nav">
+        <div><a href="index.html" class="tharder-link">THARDER</a></div>
+        <div class="nav-right">
+            <a href="login.html" class="login-link">註冊 / 登入</a>
+        </div>
+    </div>
+
+    <main>
+    <div class="container">
+        <!-- 左側分類選單 -->
+        <div class="sidebar">
+            <a href="learn1.html"><button class="category-btn">問題請益</button></a>
+            <a href="learn2.html"><button class="category-btn">課程評價</button></a>
+            <a href="learn3.html"><button class="category-btn">資源分享</button></a>
+        </div>
+
+        <!-- 右側留言區域 -->
+        <div class="message-board">
+            <div class="message-header">
+                <h2>課程評價</h2>
+            </div>
+            <!-- 範例課程訊息框 -->
+            
+            <div class="message">
+                <div class="course-info">
+                    <p class="course-name">工業科技教育概論</p>
+                    <p class="teacher-name">林坤誼 老師</p>
+                    <p class="course-time">星期一 6-7</p>
+                </div>
+                <div class="actions">
+                    <div class="reaction">
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="cool-count-8">0人</span>
+                            <button class="reaction-btn" data-action="cool" data-course-id="8">涼+1</button>
+                        </div>
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="hard-count-8">0人</span>
+                            <button class="reaction-btn" data-action="hard" data-course-id="8">甜+1</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="message">
+                <div class="course-info">
+                    <p class="course-name">基本設計</p>
+                    <p class="teacher-name">簡佑宏 老師</p>
+                    <p class="course-time">星期二 7-9</p>
+                </div>
+                <div class="actions">
+                    <div class="reaction">
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="cool-count-9">0人</span>
+                            <button class="reaction-btn" data-action="cool" data-course-id="9">涼+1</button>
+                        </div>
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="hard-count-9">0人</span>
+                            <button class="reaction-btn" data-action="hard" data-course-id="9">甜+1</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="message">
+                <div class="course-info">
+                    <p class="course-name">人力資源發展概論</p>
+                    <p class="teacher-name">孫弘岳 老師</p>
+                    <p class="course-time">星期三 7-9</p>
+                </div>
+                <div class="actions">
+                    <div class="reaction">
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="cool-count-10">0人</span>
+                            <button class="reaction-btn" data-action="cool" data-course-id="10">涼+1</button>
+                        </div>
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="hard-count-10">0人</span>
+                            <button class="reaction-btn" data-action="hard" data-course-id="10">甜+1</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="message">
+                <div class="course-info">
+                    <p class="course-name">計算機概論</p>
+                    <p class="teacher-name">許庭嘉 老師</p>
+                    <p class="course-time">星期二 2-4</p>
+                </div>
+                <div class="actions">
+                    <div class="reaction">
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="cool-count-11">0人</span>
+                            <button class="reaction-btn" data-action="cool" data-course-id="11">涼+1</button>
+                        </div>
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="hard-count-11">0人</span>
+                            <button class="reaction-btn" data-action="hard" data-course-id="11">甜+1</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="message">
+                <div class="course-info">
+                    <p class="course-name">電腦影像處理</p>
+                    <p class="teacher-name">張玉山 老師</p>
+                    <p class="course-time">星期三 5-7</p>
+                </div>
+                <div class="actions">
+                    <div class="reaction">
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="cool-count-12">0人</span>
+                            <button class="reaction-btn" data-action="cool" data-course-id="12">涼+1</button>
+                        </div>
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="hard-count-12">0人</span>
+                            <button class="reaction-btn" data-action="hard" data-course-id="12">甜+1</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="message">
+                <div class="course-info">
+                    <p class="course-name">機械製造</p>
+                    <p class="teacher-name">蔡其瑞 老師</p>
+                    <p class="course-time">星期一 1-4</p>
+                </div>
+                <div class="actions">
+                    <div class="reaction">
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="cool-count-13">0人</span>
+                            <button class="reaction-btn" data-action="cool" data-course-id="13">涼+1</button>
+                        </div>
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="hard-count-13">0人</span>
+                            <button class="reaction-btn" data-action="hard" data-course-id="13">甜+1</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="message">
+                <div class="course-info">
+                    <p class="course-name">木工製造</p>
+                    <p class="teacher-name">林弘昌 老師</p>
+                    <p class="course-time">星期二 1-4</p>
+                </div>
+                <div class="actions">
+                    <div class="reaction">
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="cool-count-14">0人</span>
+                            <button class="reaction-btn" data-action="cool" data-course-id="14">涼+1</button>
+                        </div>
+                        <div class="reaction-item">
+                            <span class="reaction-count" id="hard-count-14">0人</span>
+                            <button class="reaction-btn" data-action="hard" data-course-id="14">甜+1</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="pages">
+                <a href="learn2.html">1</a>
+                <a href="learn2_2.html">2</a>
+                <a href="learn2_3.html">3</a>
+                <a href="learn2_4.html">4</a>
+                <a href="learn2_5.html">5</a>
+                <a href="learn2_6.html">6</a>
+                <a href="learn2_7.html">7</a>
+                <a href="learn2_8.html">8</a>
+                <a href="learn2_9.html">9</a>
+                <a href="learn2_10.html">10</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="footer">
+        <h3>@網際網路程式設計 期末專題</h3>
+    </div>
+</main>
+
+
+</body>
+</html>

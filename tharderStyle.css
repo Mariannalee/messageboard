@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EFE8E0;
+    color: #3E2F23;
+}
+
+/* Header */
+.header {
+    position: relative;
+    background: url('阿伯勒建物-1.jpg') no-repeat center center/cover;
+    height: 380px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.3s ease; /* 加入過渡效果 */
+    opacity: 0.95;
+}
+
+.header:hover {
+    opacity: 0.65; /* 滑鼠懸停時改變透明度 */
+}
+
+.header h1 {
+    font-size: 80px;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.header h2 {
+    font-size: 45px;
+    margin-top: 10px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.nav {
+    background-color: #3E2F23;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    color: #FFF;
+    height: 30px;
+    align-items: center;
+    font-size: 25px;
+}
+
+.nav-right {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.login-link {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+.tharder-link {
+    color: #FFF;
+    text-decoration: none;
+}
+/* Navigation */
+.menu {
+    display: flex;
+    background-color: #5A4738;
+    color: white;
+    font-size: 18px;
+    justify-content: center;
+}
+
+.menu-item {
+    padding: 15px 348px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: #3E2F23;
+
+}
+
+/* Section */
+.section {
+    padding: 15px;
+    background-color: #a79f99;
+    width: 80%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+}
+
+.section h3 {
+    font-size: 26px;
+    margin: 15px 0 5px;
+    color: #3E2F23;
+}
+
+.section p {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #3E2F23;
+    font-weight: 500;
+}
+
+.footer {
+    background-color: #292929;
+    color: #c6c6c6;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 0;
+}

@@ -1,0 +1,247 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EFE8E0;
+    color: #3E2F23;
+}
+
+html, body,main {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Header */
+.nav {
+    background-color: #3E2F23;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: #FFF;
+    font-size: 25px;
+}
+
+.nav-right {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.login-link {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.tharder-link {
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 90%;
+    margin: 20px auto;
+    gap: 20px;
+    flex: 1; /* 讓這部分內容區域擴展填滿剩餘空間 */
+    padding-bottom: 60px; /* 留出footer的高度，防止內容被遮擋 */
+}
+
+/* 左側分類選單 */
+.sidebar {
+    width: 200px;
+    height: 165px;
+    background-color: #5A4738;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.category-btn {
+    background-color: #8D745F;
+    width: 200px;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.category-btn:hover {
+    background-color: #3E2F23;
+}
+
+/* 右側留言區域 */
+.message-board {
+    flex: 1;
+    background-color: #C4B3A9;
+    border-radius: 10px;
+    padding: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.message-header {
+    border-bottom: 2px solid #8D745F;
+    margin-bottom: 10px; 
+    height: 45px;
+}
+
+.message-header h2 {
+    color: #3E2F23;
+    font-size: 30px;
+}
+
+/* 每則留言 */
+.message {
+    display: flex;
+    /*flex-direction: column;*/
+    background-color: #EFE8E0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 9%;
+}
+
+.message .content {
+    word-wrap: break-word;  /* 讓內容超出時換行 */
+    white-space: pre-wrap; /* 保留換行和空格 */
+    overflow-wrap: break-word;  /* 確保在較長的單詞或 URL 時換行 */
+}
+
+.content {
+    margin: 5px 0;
+    color: #3E2F23;
+    flex: 1;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 60%;
+    
+}
+
+/* 按鈕樣式 */
+.actions .btn {
+    background-color: #8D745F;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.actions .btn:hover {
+    background-color: #3E2F23;
+}
+
+.footer {
+    background-color: #292929;
+    color: #c6c6c6;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px; /* 適當的內邊距 */
+    position: relative; /* 使用相對定位 */
+    bottom: 0; /* 確保 footer 在底部 */
+
+}
+
+.course-info {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    margin-left: 5px;
+    /*height: 40px;*/
+}
+
+.course-name {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 20px ;
+}
+
+.teacher-name, .course-time {
+    font-size: 20px;
+    color: #6A5B53;
+    margin-right: 20px ;
+}
+
+/* 反應按鈕 */
+.reaction {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    margin-left: 30%;
+}
+
+.reaction-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reaction-count {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3E2F23;
+    margin-left: 10px;
+}
+
+.reaction-btn {
+    background-color: #8D745F;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.reaction-btn:hover {
+    background-color: #3E2F23;
+}
+
+/* 留言按鈕 */
+.comment-btn {
+    background-color: #654b36;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 20px;
+    width: 100px;
+}
+
+.comment-btn:hover {
+    background-color: #3E2F23;
+}
+
+.pages{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    padding: 0px 40%;
+    gap: 10px;
+}
+
+.pages a{
+    color: #3E2F23;
+    font-size: 20px;
+}

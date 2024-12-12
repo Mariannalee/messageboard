@@ -1,0 +1,11 @@
+{
+    "name": "learn2.html",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "learnScript2.js"
+    },
+    "dependencies": {
+        "@supabase/supabase-js": "^2.46.1"
+    }
+}

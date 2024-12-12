@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EFE8E0;
+    color: #3E2F23;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+
+    background-image: url('16pic_7763327_b.jpg'); /* 將 'path/to/your-image.jpg' 替換為您的圖片路徑 */
+    background-size: cover; /* 圖片填滿整個背景 */
+    background-position: center; /* 圖片置中 */
+    background-repeat: no-repeat; /* 防止圖片重複 */
+
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #3E2F23;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: #FFF;
+    height: 30px;
+    align-items: center;
+    font-size: 25px;
+}
+
+.login-link {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* Login Form */
+.login-container {
+    background-color: #ece1d3;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+    opacity: 0.95;
+}
+
+.login-container h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #3E2F23;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+}
+
+.input-group label {
+    font-size: 16px;
+    color: #3E2F23;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: #ece1d3;
+    padding: 0 0 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #5A4738;
+    background-color: transparent;
+    color: #3E2F23;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-bottom-color: #3E2F23;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #3E2F23;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-btn,
+.signup-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn {
+    background-color: #5A4738;
+}
+
+.signup-btn {
+    background-color: #A89A8E;
+    color: #FFF;
+}
+
+.login-btn:hover {
+    background-color: #3E2F23;
+}
+
+.signup-btn:hover {
+    background-color: #8F8074;
+}
+
+.tharder-link {
+    color: #FFF;
+    text-decoration: none;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tharder - 屬於科技人的留言版</title>
+    <link rel="stylesheet" href="learnStyle.css">
+    <script src="learnScript.js" defer></script>
+</head>
+<body>
+    <div class="nav">
+        <div><a href="index.html" class="tharder-link">THARDER</a></div>
+        <div class="nav-right">
+            <a href="login.html" class="login-link">註冊 / 登入</a>
+        </div>
+    </div>
+
+    <main>
+    <div class="container">
+        <!-- 左側分類選單 -->
+        <div class="sidebar">
+            <a href="message1.html"><button class="category-btn">心情</button></a>
+            <a href="message2.html"><button class="category-btn">活動</button></a>
+            <a href="message3.html"><button class="category-btn">考試</button></a>
+        </div>
+
+        <!-- 右側留言區域 -->
+        <div class="message-board">
+            <div class="message-header">
+                <h2>活動</h2>
+            </div>
+            <div class="messages" id="messageList">
+                <!-- 留言會即時顯示在這裡 -->
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- 新增留言按鈕 -->
+    <button id="addMessageBtn" class="add-message-btn" title="新增留言">+</button>
+
+    <!-- 新增留言彈窗 -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <h3>新增留言</h3>
+            <input type="text" id="username" placeholder="輸入您的名稱" required>
+            <textarea id="messageContent" placeholder="輸入留言內容" required></textarea>
+            <button id="submitMessage" class="submit-btn">送出</button>
+            <button id="closeModal" class="close-btn">關閉</button>
+        </div>
+    </div>
+    <div class="footer">
+        <h3>@網際網路程式設計 期末專題</h3>
+    </div>
+</main>
+
+
+</body>
+</html>

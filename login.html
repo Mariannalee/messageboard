@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tharder</title>
+    <link rel="stylesheet" href="loginStyle.css">
+</head>
+<body>
+    <!--Header -->
+    <div class="nav">
+        <div><a href="index.html" class="tharder-link">THARDER</a></div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <h2>登錄</h2>
+        <form action="login_process.html" method="post">
+            <div class="input-group">
+                <label for="username">帳號</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <a href="#" class="forgot-password">忘記密碼?</a>
+            <button type="submit" class="login-btn">log in</button>
+            <button type="button" class="signup-btn">sign up</button>
+        </form>
+    </div>
+
+</body>
+</html>
