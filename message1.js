@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 讀取並顯示留言
     async function displayMessages() {
       const { data, error } = await supabase.from('messages').select('*').order('id', { ascending: false });
-  
+      console.log('開始執行 displayMessages');
       if (error) {
         console.error('Error fetching messages:', error);
         return;
