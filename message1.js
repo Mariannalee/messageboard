@@ -1,92 +1,114 @@
-import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js@latest';
-        const supabase = createClient('https://nikhhegzfihqipkzkeiu.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pa2hoZWd6ZmlocWlwa3prZWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE4MTQ0MTgsImV4cCI6MjA0NzM5MDQxOH0.OSrLKkyJKAkrxtsczcyOXQCk032I6MhveGap8YueERY');
+import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
+
+const supabaseUrl = 'https://nikhhegzfihqipkzkeiu.supabase.co'; // 從 Supabase 設定檔取得
+//const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1bmZzdnhybW5leW5wbnpjam1xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMTMyNzA2MCwiZXhwIjoyMDQ2OTAzMDYwfQ.aM6KVC8kvhkbX2XKMcXp2d06qo6eoSnGbMK4UPQ-rrc'; // 從 Supabase 設定檔取得
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pa2hoZWd6ZmlocWlwa3prZWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE4MTQ0MTgsImV4cCI6MjA0NzM5MDQxOH0.OSrLKkyJKAkrxtsczcyOXQCk032I6MhveGap8YueERY'; // 從 Supabase 設定檔取得
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 document.addEventListener('DOMContentLoaded', async () => {
-    const messageList = document.getElementById('messageList');
-    const addMessageBtn = document.getElementById('addMessageBtn');
-    const messageModal = document.getElementById('messageModal');
-    const submitMessage = document.getElementById('submitMessage');
-    const closeModal = document.getElementById('closeModal');
-    const usernameInput = document.getElementById('username');
-    const messageContentInput = document.getElementById('messageContent');
-  
-    // 開啟彈窗
-    addMessageBtn.addEventListener('click', () => {
-      messageModal.style.display = 'block';
+    const messageList = document.getElementById("messageList");
+    const addMessageBtn = document.getElementById("addMessageBtn");
+    const messageModal = document.getElementById("messageModal");
+    const closeModal = document.getElementById("closeModal");
+    const submitMessage = document.getElementById("submitMessage");
+
+    // 顯示留言
+    const loadMessages = async () => {
+        const { data, error } = await supabase
+            .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
+            .select('id, username, content, created_at')
+            .order('created_at', { ascending: false });  // 按照時間排序顯示留言
+
+        if (error) {
+            console.error('讀取留言錯誤:', error);
+            return;
+        }
+
+        // 清空留言列表，並重新載入
+        messageList.innerHTML = '';
+        data.forEach(message => {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+
+            messageDiv.innerHTML = `
+                <div class="user-info">${message.username} <span class="timestamp">${new Date(message.created_at).toLocaleString()}</span></div>
+                <div class="content">${message.content}</div>
+                <div class="actions">
+                    <button class="like-btn">👍 0</button>
+                </div>
+            `;
+
+            // 新增按讚事件
+            const likeButton = messageDiv.querySelector(".like-btn");
+            likeButton.addEventListener("click", () => {
+                let count = parseInt(likeButton.textContent.split(" ")[1]);
+                likeButton.textContent = `👍 ${count + 1}`;
+            });
+
+            messageList.appendChild(messageDiv);
+        });
+    };
+
+    // 初始化留言
+    loadMessages();
+
+    // 點擊 + 按鈕，顯示彈窗
+    addMessageBtn.addEventListener("click", () => {
+        messageModal.classList.add("show");
     });
-  
-    // 關閉彈窗
-    closeModal.addEventListener('click', () => {
-      messageModal.style.display = 'none';
+
+    // 點擊關閉按鈕，隱藏彈窗
+    closeModal.addEventListener("click", () => {
+        messageModal.classList.remove("show");
     });
-  
-    // 提交留言
-    submitMessage.addEventListener('click', async () => {
-      const username = usernameInput.value.trim();
-      const messageContent = messageContentInput.value.trim();
-      if (!username || !messageContent) {
-        alert('請填寫名稱和留言內容');
-        return;
-      }
-  
-      // 將資料插入 Supabase 資料庫
-      const { data, error } = await supabase.from('messages').insert([{ username, content: messageContent }]);
-      console.log('插入成功')
-      if (error) {
-        console.error('Error inserting message:', error);
-        alert('留言失敗，請稍後再試');
-        return;
-      }
-  
-      // 清空輸入欄位並關閉彈窗
-      usernameInput.value = '';
-      messageContentInput.value = '';
-      messageModal.style.display = 'none';
-      console.log('關閉成功');
-      // 將留言即時顯示到留言板
-      
-      displayMessages();
-      console.log('即將執行 displayMessages()');
+
+    // 點擊送出按鈕，新增留言到 Supabase
+    submitMessage.addEventListener("click", async () => {
+        const username = document.getElementById("username").value.trim();
+        const content = document.getElementById("messageContent").value.trim();
+
+        if (username && content) {
+            // 儲存留言到 Supabase
+            const { error } = await supabase
+                .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
+                .insert([
+                    { username, content }
+                ]);
+
+            if (error) {
+                console.error('新增留言錯誤:', error);
+                return;
+            }
+
+            // 顯示新增的留言
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+
+            const timestamp = new Date().toLocaleString();
+
+            messageDiv.innerHTML = `
+                <div class="user-info">${username} <span class="timestamp">${timestamp}</span></div>
+                <div class="content">${content}</div>
+                <div class="actions">
+                    <button class="like-btn">👍 0</button>
+                </div>
+            `;
+
+            // 把新增的留言加入到留言列表
+            messageList.prepend(messageDiv);
+
+            // 為新的按讚按鈕新增點擊事件監聽器
+            const likeButton = messageDiv.querySelector(".like-btn");
+            likeButton.addEventListener("click", () => {
+                let count = parseInt(likeButton.textContent.split(" ")[1]);
+                likeButton.textContent = `👍 ${count + 1}`;
+            });
+
+            // 清空輸入框並關閉彈窗
+            document.getElementById("username").value = '';
+            document.getElementById("messageContent").value = '';
+            messageModal.classList.remove("show");
+        }
     });
-  
-    // 讀取並顯示留言
-async function displayMessages() {
-  const { data, error } = await supabase
-    .from('messages')
-    .select('*')
-    .order('id', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching messages:', error);
-    return;
-  }
-
-  // 取得留言容器
-  const messageList = document.getElementById('messageList');
-  messageList.innerHTML = ''; // 清空現有留言
-
-  // 如果沒有資料，顯示提示訊息
-  if (!Array.isArray(data) || data.length === 0) {
-    messageList.innerHTML = '<p>目前沒有留言。</p>';
-    return;
-  }
-
-  // 渲染每一條留言
-  data.forEach(message => {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message';
-    messageDiv.innerHTML = `
-      <div class="message-header">
-        <strong>${message.username}</strong> 於 ${new Date(message.created_at).toLocaleString()}
-      </div>
-      <div class="message-content">
-        <p>${message.content}</p>
-      </div>
-    `;
-    messageList.appendChild(messageDiv);
-  });
-}
-
-// 記得在頁面加載時呼叫 displayMessages()
-document.addEventListener('DOMContentLoaded', () => {
-  displayMessages();
 });
