@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loadMessages = async () => {
         const { data, error } = await supabase
             .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
-            .select('id, username, content, created_at')
+            .select('id, username, content, created_at,likes')
             .order('created_at', { ascending: false });  // 按照時間排序顯示留言
 
         if (error) {
@@ -38,6 +38,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             const likeButton = messageDiv.querySelector(".like-btn");
             likeButton.addEventListener("click", () => {
                 let count = parseInt(likeButton.textContent.split(" ")[1]);
+                const { error } = await supabase
+                    .from('MessageBoard')
+                    .update({ likes: count + 1 })
+                    .eq('id', message.id);
+                if (error) {
+                    console.error('更新按讚數錯誤:', error);
+                    return;
+                }
+
+                // 更新畫面上的按讚數
                 likeButton.textContent = `👍 ${count + 1}`;
             });
 
@@ -97,6 +107,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             const likeButton = messageDiv.querySelector(".like-btn");
             likeButton.addEventListener("click", () => {
                 let count = parseInt(likeButton.textContent.split(" ")[1]);
+                const { error } = await supabase
+                    .from('MessageBoard')
+                    .update({ likes: count + 1 })
+                    .eq('id', message.id);  // 使用新留言的 ID
+
+                if (error) {
+                    console.error('更新按讚數錯誤:', error);
+                    return;
+                }
+
+                // 更新畫面上的按讚數
                 likeButton.textContent = `👍 ${count + 1}`;
             });
 
