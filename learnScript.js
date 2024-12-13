@@ -23,14 +23,14 @@ closeModal.addEventListener("click", () => {
 // 點擊送出按鈕，新增留言並儲存至 Supabase
 submitMessage.addEventListener("click", async () => {
     const username = document.getElementById("username").value.trim();
-    const content = document.getElementById("messageContent").value.trim();
+    const content = document.getElementById("message").value.trim();
 
     if (username && content) {
         // 儲存留言到 Supabase
         const { data, error } = await supabase
             .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
             .insert([
-                insert([{ username, content: messageContent }]);
+                insert([{ username, content: message}]);
   
 
         if (error) {
