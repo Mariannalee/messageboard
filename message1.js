@@ -63,6 +63,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   
       // 清空舊留言並渲染新留言
       messageList.innerHTML = '';
+      if (data.length === 0) {
+      const noMessages = document.createElement('div');
+      noMessages.textContent = '目前沒有留言';
+      messageList.appendChild(noMessages);
+      return;
+  }
       data.forEach(message => {
         const messageDiv = document.createElement('div');
         messageDiv.className = 'message';
