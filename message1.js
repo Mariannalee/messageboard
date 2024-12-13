@@ -73,10 +73,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       data.forEach(message => {
         const messageDiv = document.createElement('div');
         messageDiv.className = 'message';
-        messageDiv.innerHTML = `
-          <strong>${message.username}</strong>: ${message.content}
-        `;
+        messageDiv.innerHTML = `<strong>${message.username}</strong>: ${message.content}`;
         messageList.appendChild(messageDiv);
+        console.log('顯示留言', data);
       });
     }
   
