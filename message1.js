@@ -49,35 +49,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   
     // 讀取並顯示留言
-    async function displayMessages() {
-      console.log('開始執行 displayMessages');
-      const { data, error } = await supabase.from('messages').select('*').order('id', { ascending: false });
-      console.log('開始執行 displayMessages');
-      if (error) {
-        console.error('Error fetching messages:', error);
-        return;
-      }
-      console.log('成功讀取留言:', data);
-  
-      // 清空舊留言並渲染新留言
-      messageList.innerHTML = '';
-      if (data.length === 0) {
-      const noMessages = document.createElement('div');
-      console.log('顯示留言', data);
-      noMessages.textContent = '目前沒有留言';
-      messageList.appendChild(noMessages);
-      return;
+async function displayMessages() {
+  const { data, error } = await supabase
+    .from('messages')
+    .select('*')
+    .order('id', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching messages:', error);
+    return;
   }
-      data.forEach(message => {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'message';
-        messageDiv.innerHTML = `<strong>${message.username}</strong>: ${message.content}`;
-        messageList.appendChild(messageDiv);
-        console.log('顯示留言', data);
-      });
-    }
-  
-    // 初次載入時顯示留言
-    displayMessages();
+
+  // 取得留言容器
+  const messageList = document.getElementById('messageList');
+  messageList.innerHTML = ''; // 清空現有留言
+
+  // 如果沒有資料，顯示提示訊息
+  if (!Array.isArray(data) || data.length === 0) {
+    messageList.innerHTML = '<p>目前沒有留言。</p>';
+    return;
+  }
+
+  // 渲染每一條留言
+  data.forEach(message => {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message';
+    messageDiv.innerHTML = `
+      <div class="message-header">
+        <strong>${message.username}</strong> 於 ${new Date(message.created_at).toLocaleString()}
+      </div>
+      <div class="message-content">
+        <p>${message.content}</p>
+      </div>
+    `;
+    messageList.appendChild(messageDiv);
   });
-  
+}
+
+// 記得在頁面加載時呼叫 displayMessages()
+document.addEventListener('DOMContentLoaded', () => {
+  displayMessages();
+});
