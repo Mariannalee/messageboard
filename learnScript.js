@@ -30,8 +30,8 @@ submitMessage.addEventListener("click", async () => {
         const { data, error } = await supabase
             .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
             .insert([
-                { username, content }
-            ]);
+                insert([{ username, content: messageContent }]);
+  
 
         if (error) {
             console.error('新增留言錯誤:', error);
