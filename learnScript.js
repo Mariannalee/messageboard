@@ -23,8 +23,8 @@ closeModal.addEventListener("click", () => {
 
 // 點擊送出按鈕，新增留言並儲存至 Supabase
 submitMessage.addEventListener("click", async () => {
-    const username = usernameInput.value.trim();
-    const content = messageContentInput.value.trim();
+    const username = document.getElementById("username").value.trim();
+    const content = document.getElementById("messageContent").value.trim();
     if (username && messageContent) {
         // 儲存留言到 Supabase
         const { data, error } = await supabase
