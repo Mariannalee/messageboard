@@ -117,8 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // 更新畫面上的按讚數
-                count++;
-                likeButton.textContent = `👍 ${count}`;
+                likeButton.textContent = `👍 ${count + 1}`;
             });
 
             // 把新增的留言加入到留言列表
