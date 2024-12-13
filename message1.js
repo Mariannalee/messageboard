@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       messageList.innerHTML = '';
       if (data.length === 0) {
       const noMessages = document.createElement('div');
-      console.log('成功讀取留言:', data);
+      console.log('顯示留言', data);
       noMessages.textContent = '目前沒有留言';
       messageList.appendChild(noMessages);
       return;
