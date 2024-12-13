@@ -8,6 +8,7 @@ const addMessageBtn = document.getElementById("addMessageBtn");
 const messageModal = document.getElementById("messageModal");
 const closeModal = document.getElementById("closeModal");
 const submitMessage = document.getElementById("submitMessage");
+const messageContentInput = document.getElementById("messageContent");
 const messageList = document.getElementById("messageList");
 
 // 點擊 + 按鈕，顯示彈窗
@@ -22,15 +23,14 @@ closeModal.addEventListener("click", () => {
 
 // 點擊送出按鈕，新增留言並儲存至 Supabase
 submitMessage.addEventListener("click", async () => {
-    const username = document.getElementById("username").value.trim();
-    const content = document.getElementById("message").value.trim();
-
-    if (username && content) {
+    const username = usernameInput.value.trim();
+    const content = messageContentInput.value.trim();
+    if (username && messageContent) {
         // 儲存留言到 Supabase
         const { data, error } = await supabase
             .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
             .insert([
-                insert([{ username, content: message}]);
+                insert([{ username, message: messageC}]);
   
 
         if (error) {
