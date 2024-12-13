@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="user-info">${message.username} <span class="timestamp">${new Date(message.created_at).toLocaleString()}</span></div>
                 <div class="content">${message.content}</div>
                 <div class="actions">
-                    <button class="like-btn">👍 0</button>
+                    <button class="like-btn">👍 ${message.likes}</button>
                 </div>
             `;
 
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="user-info">${username} <span class="timestamp">${timestamp}</span></div>
                 <div class="content">${content}</div>
                 <div class="actions">
-                    <button class="like-btn">👍 0</button>
+                    <button class="like-btn">👍${message.likes}/button>
                 </div>
             `;
 
