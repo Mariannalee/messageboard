@@ -1,5 +1,5 @@
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
-const supabase = createClient('https://nikhhegzfihqipkzkeiu.supabase.co', 'YOUR_SUPABASE_ANON_KEY');
+const supabase = createClient('https://nikhhegzfihqipkzkeiu.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pa2hoZWd6ZmlocWlwa3prZWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE4MTQ0MTgsImV4cCI6MjA0NzM5MDQxOH0.OSrLKkyJKAkrxtsczcyOXQCk032I6MhveGap8YueERY');
 
 document.addEventListener('DOMContentLoaded', () => {
     const messageList = document.getElementById("messageList");
