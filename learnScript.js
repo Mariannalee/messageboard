@@ -73,7 +73,7 @@ submitMessage.addEventListener("click", async () => {
 const loadMessages = async () => {
     const { data, error } = await supabase
         .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
-        .select('id, username, content, created_at')
+        .select('id, username, message, created_at')
         .order('created_at', { ascending: false });  // 按照時間排序顯示留言
 
     if (error) {
