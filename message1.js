@@ -2,7 +2,6 @@ import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js@late
         const supabase = createClient('https://nikhhegzfihqipkzkeiu.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pa2hoZWd6ZmlocWlwa3prZWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE4MTQ0MTgsImV4cCI6MjA0NzM5MDQxOH0.OSrLKkyJKAkrxtsczcyOXQCk032I6MhveGap8YueERY');
 document.addEventListener('DOMContentLoaded', async () => {
     const messageList = document.getElementById('messageList');
-    console.log(messageList);  // 確認是否正確獲取 DOM 元素
     const addMessageBtn = document.getElementById('addMessageBtn');
     const messageModal = document.getElementById('messageModal');
     const submitMessage = document.getElementById('submitMessage');
@@ -23,9 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 提交留言
     submitMessage.addEventListener('click', async () => {
       const username = usernameInput.value.trim();
-      console.log('去除空白');
       const messageContent = messageContentInput.value.trim();
-      console.log('去除空白2');
       if (!username || !messageContent) {
         alert('請填寫名稱和留言內容');
         return;
@@ -53,6 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
     // 讀取並顯示留言
     async function displayMessages() {
+      console.log('開始執行 displayMessages');
       const { data, error } = await supabase.from('messages').select('*').order('id', { ascending: false });
       console.log('開始執行 displayMessages');
       if (error) {
