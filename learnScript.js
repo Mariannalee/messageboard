@@ -27,10 +27,7 @@ submitMessage.addEventListener("click", async () => {
     const content = document.getElementById("messageContent").value.trim();
     if (username && messageContent) {
         // 儲存留言到 Supabase
-        const { data, error } = await supabase
-            .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
-            .insert([
-                insert([{ username, message: messageContent}]);
+        const { data, error } = await supabase.from('MessagesBoard').insert([{ username, message: messageContent }]);
   
 
         if (error) {
