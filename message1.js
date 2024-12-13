@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
       // 將資料插入 Supabase 資料庫
       const { data, error } = await supabase.from('messages').insert([{ username, content: messageContent }]);
-      
+      console.log('插入成功')
       if (error) {
         console.error('Error inserting message:', error);
         alert('留言失敗，請稍後再試');
