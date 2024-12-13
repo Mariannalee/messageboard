@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error fetching messages:', error);
         return;
       }
+      console.log('成功讀取留言:', data);
   
       // 清空舊留言並渲染新留言
       messageList.innerHTML = '';
