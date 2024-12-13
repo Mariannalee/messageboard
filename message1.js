@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       messageModal.style.display = 'none';
   
       // 將留言即時顯示到留言板
+      console.log('即將執行 displayMessages()');
       displayMessages();
     });
   
