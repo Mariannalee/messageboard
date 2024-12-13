@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 顯示留言
     const loadMessages = async () => {
         const { data, error } = await supabase
-            .from('MessageBoard')
-            .select('id, username, content, created_at, likes')
-            .order('created_at', { ascending: false });
+            .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
+            .select('id, username, content, created_at,likes')
+            .order('created_at', { ascending: false });  // 按照時間排序顯示留言
 
         if (error) {
             console.error('讀取留言錯誤:', error);
@@ -36,21 +36,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 新增按讚事件
             const likeButton = messageDiv.querySelector(".like-btn");
-            likeButton.addEventListener("click", async () => {
-                let count = message.likes;
+            likeButton.addEventListener("click", () => {
+                let count = parseInt(likeButton.textContent.split(" ")[1]);
                 const { error } = await supabase
                     .from('MessageBoard')
                     .update({ likes: count + 1 })
                     .eq('id', message.id);
-
                 if (error) {
                     console.error('更新按讚數錯誤:', error);
                     return;
                 }
 
                 // 更新畫面上的按讚數
-                message.likes++;
-                likeButton.textContent = `👍 ${message.likes}`;
+                likeButton.textContent = `👍 ${count + 1}`;
             });
 
             messageList.appendChild(messageDiv);
@@ -76,50 +74,52 @@ document.addEventListener('DOMContentLoaded', async () => {
         const content = document.getElementById("messageContent").value.trim();
 
         if (username && content) {
-            const { data, error } = await supabase
-                .from('MessageBoard')
+            // 儲存留言到 Supabase
+            const { error } = await supabase
+                .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
                 .insert([
-                    { username, content, likes: 0 }  // 初始化 likes 為 0
-                ])
-                .select();
+                    { username, content}
+                ]);
 
             if (error) {
                 console.error('新增留言錯誤:', error);
                 return;
             }
 
-            const newMessage = data[0];
+            // 顯示新增的留言
             const messageDiv = document.createElement("div");
             messageDiv.classList.add("message");
 
+            const timestamp = new Date().toLocaleString();
+
             messageDiv.innerHTML = `
-                <div class="user-info">${newMessage.username} <span class="timestamp">${new Date(newMessage.created_at).toLocaleString()}</span></div>
-                <div class="content">${newMessage.content}</div>
+                <div class="user-info">${username} <span class="timestamp">${timestamp}</span></div>
+                <div class="content">${content}</div>
                 <div class="actions">
-                    <button class="like-btn">👍 ${newMessage.likes}</button>
+                    <button class="like-btn">👍${message.likes}/button>
                 </div>
             `;
 
-            // 新增按讚事件
+            // 把新增的留言加入到留言列表
+            messageList.prepend(messageDiv);
+
+            // 為新的按讚按鈕新增點擊事件監聽器
             const likeButton = messageDiv.querySelector(".like-btn");
-            likeButton.addEventListener("click", async () => {
-                let count = newMessage.likes;
+            likeButton.addEventListener("click", () => {
+                let count = parseInt(likeButton.textContent.split(" ")[1]);
                 const { error } = await supabase
                     .from('MessageBoard')
                     .update({ likes: count + 1 })
-                    .eq('id', newMessage.id);
+                    .eq('id', message.id);  // 使用新留言的 ID
 
                 if (error) {
                     console.error('更新按讚數錯誤:', error);
                     return;
                 }
 
-                newMessage.likes++;
-                likeButton.textContent = `👍 ${newMessage.likes}`;
+                // 更新畫面上的按讚數
+                likeButton.textContent = `👍 ${count + 1}`;
             });
-
-            // 把新增的留言加入到留言列表
-            messageList.prepend(messageDiv);
 
             // 清空輸入框並關閉彈窗
             document.getElementById("username").value = '';
@@ -128,4 +128,3 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
-
