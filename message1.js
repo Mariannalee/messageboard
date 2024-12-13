@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadMessages = async () => {
         const { data, error } = await supabase
             .from('MessageBoard')
-            .select('id, username, content, created_at, likes')
+            .select('id, username, content, created_at')
             .order('created_at', { ascending: false });
 
         if (error) {
@@ -33,29 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDiv.innerHTML = `
             <div class="user-info">${message.username} <span class="timestamp">${new Date(message.created_at).toLocaleString()}</span></div>
             <div class="content">${message.content}</div>
-            <div class="actions">
-                <button class="like-btn">👍 ${message.likes}</button>
-            </div>
         `;
-
-        // 新增按讚事件
-        const likeButton = messageDiv.querySelector(".like-btn");
-        likeButton.addEventListener("click", async () => {
-            const updatedLikes = message.likes + 1;
-            const { error } = await supabase
-                .from('MessageBoard')
-                .update({ likes: updatedLikes })
-                .eq('id', message.id);
-
-            if (error) {
-                console.error('更新按讚數錯誤:', error);
-                return;
-            }
-
-            // 更新畫面上的按讚數
-            message.likes = updatedLikes;
-            likeButton.textContent = `👍 ${message.likes}`;
-        });
 
         messageList.appendChild(messageDiv);
     };
@@ -81,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (username && content) {
             const { data, error } = await supabase
                 .from('MessageBoard')
-                .insert([{ username, content, likes: 0 }])
+                .insert([{ username, content }])
                 .select();
 
             if (error) {
