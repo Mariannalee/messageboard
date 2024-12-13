@@ -22,8 +22,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 提交留言
     submitMessage.addEventListener('click', async () => {
       const username = usernameInput.value.trim();
+      console.log('去除空白');
       const messageContent = messageContentInput.value.trim();
-  
+      console.log('去除空白2');
       if (!username || !messageContent) {
         alert('請填寫名稱和留言內容');
         return;
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
       // 將資料插入 Supabase 資料庫
       const { data, error } = await supabase.from('messages').insert([{ username, content: messageContent }]);
-  
+      
       if (error) {
         console.error('Error inserting message:', error);
         alert('留言失敗，請稍後再試');
@@ -42,10 +43,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       usernameInput.value = '';
       messageContentInput.value = '';
       messageModal.style.display = 'none';
-  
+      console.log('關閉成功');
       // 將留言即時顯示到留言板
-      console.log('即將執行 displayMessages()');
+      
       displayMessages();
+      console.log('即將執行 displayMessages()');
     });
   
     // 讀取並顯示留言
