@@ -30,7 +30,7 @@ submitMessage.addEventListener("click", async () => {
         const { data, error } = await supabase
             .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
             .insert([
-                insert([{ username, message: messageC}]);
+                insert([{ username, message: messageContent}]);
   
 
         if (error) {
