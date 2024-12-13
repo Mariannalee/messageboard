@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const { error } = await supabase
                 .from('MessageBoard')  // 假設資料表名稱為 MessageBoard
                 .insert([
-                    { username, content }
+                    { username, message}
                 ]);
 
             if (error) {
