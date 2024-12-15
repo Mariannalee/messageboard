@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 顯示留言
     const loadMessages = async () => {
         const { data, error } = await supabase
-            .from('MessageBoard2')  // 假設資料表名稱為 MessageBoard
+            .from('MessageBoard4')  // 假設資料表名稱為 MessageBoard
             .select('id, username, content, created_at, likes')
             .order('created_at', { ascending: false });  // 按照時間排序顯示留言
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             likeButton.addEventListener("click", async () => {
                 let count = parseInt(likeButton.textContent.split(" ")[1]);
                 const { error } = await supabase
-                    .from('MessageBoard')
+                    .from('MessageBoard4')
                     .update({ likes: count + 1 })
                     .eq('id', message.id);
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (username && content) {
             // 儲存留言到 Supabase
             const { data, error } = await supabase
-                .from('MessageBoard2')
+                .from('MessageBoard4')
                 .insert([{ username, content, likes: 0 }])
                 .select(); // 回傳新增的資料
 
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             likeButton.addEventListener("click", async () => {
                 let count = parseInt(likeButton.textContent.split(" ")[1]);
                 const { error } = await supabase
-                    .from('MessageBoard2')
+                    .from('MessageBoard4')
                     .update({ likes: count + 1 })
                     .eq('id', newMessage.id);
 
