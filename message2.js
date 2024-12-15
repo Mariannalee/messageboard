@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             likeButton.addEventListener("click", async () => {
                 let count = parseInt(likeButton.textContent.split(" ")[1]);
                 const { error } = await supabase
-                    .from('MessageBoard')
+                    .from('MessageBoard2')
                     .update({ likes: count + 1 })
                     .eq('id', message.id);
 
