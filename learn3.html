@@ -27,7 +27,7 @@
         <!-- 右側留言區域 -->
         <div class="message-board">
             <div class="message-header">
-                <h2>資源分享</h2>
+                <h2>資源請益</h2>
             </div>
             <div class="messages" id="messageList">
                 <!-- 留言會即時顯示在這裡 -->
@@ -35,6 +35,29 @@
         </div>
     </div>
     
+
+    <!-- 新增留言按鈕 -->
+    <button id="addMessageBtn" class="add-message-btn" title="新增留言">+</button>
+
+    <!-- 新增留言彈窗 -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <h3>新增留言</h3>
+            <input type="text" id="username" placeholder="輸入您的名稱" required>
+            <textarea id="messageContent" placeholder="輸入留言內容" required></textarea>
+            <button id="submitMessage" class="submit-btn">送出</button>
+            <button id="closeModal" class="close-btn">關閉</button>
+        </div>
+    </div>
+    <div class="footer">
+        <h3>@網際網路程式設計 期末專題</h3>
+    </div>
+</main>
+
+
+</body>
+</html>
+
 
     <!-- 新增留言按鈕 -->
     <button id="addMessageBtn" class="add-message-btn" title="新增留言">+</button>
